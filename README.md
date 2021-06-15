@@ -9,14 +9,18 @@ Day one was about PyTorch in general, the application to the project are the def
 
 1. `make_dataset.py`, which saves the MNIST (raw) dataset in the *data/preprocessed* folder as **training** and **test** set.  
    - It is used by simply running it in a python interpreter. 
+   - It can be found [here](/src/data/make_dataset.py)
 2. `model.py`, which defines the **Neural Network** for the dataset.  
+   - It can be found [here](/src/models/model.py)
 3. `train_model.py`, which **trains** the Neural Network and saves the corresponding weights.  
-   - It is used by simply running it in a python interpreter. 
+   - It is used by simply running it in a python interpreter.
+   - It can be found [here](/src/models/train_model.py)
 4. `predict_model.py`, which uses the saved model to **predict** the class of a given image or several images.  
    - It is used by simply running it in a python interpreter.
-   - It can be found [here](/src/models/predict_model.py) 
-5. `visualize.py`, which uses [t-SNE](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html) to visualize the extracted features.  
+   - It can be found [here](/src/models/predict_model.py).
+5. `visualize.py`, which uses [t-SNE](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html) to visualize the extracted features of the model.  
    - It is used by simply running it in a python interpreter. 
+   - It can be found [here](/src/visualization/visualize.py)
 
 
 
