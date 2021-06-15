@@ -1,7 +1,26 @@
-project_name
+MLops exercises (project)
 ==============================
 
-an organized version of the MLops exercises
+The [MLops exercises](https://github.com/SkafteNicki/dtu_mlops) applied to a project on the MNIST fashion dataset. 
+
+### Day 1 
+
+Day one was about PyTorch in general, the application to the project are the definition of the python files
+
+1. `make_dataset.py`, which saves the MNIST (raw) dataset in the *data/preprocessed* folder as **training** and **test** set.  
+   - It is used by simply running it in a python interpreter. 
+2. `model.py`, which defines the **Neural Network** for the dataset.  
+3. `train_model.py`, which **trains** the Neural Network and saves the corresponding weights.  
+   - It is used by simply running it in a python interpreter. 
+4. `predict_model.py`, which uses the saved model to **predict** the class of a given image or several images.  
+   - It is used by simply running it in a python interpreter.
+   - It can be found [here](src\models\predict_model.py) 
+5. `visualize.py`, which uses [t-SNE](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html) to visualize the extracted features.  
+   - It is used by simply running it in a python interpreter. 
+
+
+
+
 
 Project Organization
 ------------
