@@ -2,9 +2,19 @@
 -e .
 
 # external requirements
-click
-Sphinx
-coverage
+argsparse
 awscli
+click
+coverage
+dotenv
 flake8
+mathplotlib
+numpy
+os
+pathlib
 python-dotenv>=0.5.1
+Sphinx
+sys
+sklearn
+torchvision
+torch
