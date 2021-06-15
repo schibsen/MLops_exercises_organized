@@ -1,17 +1,15 @@
 #%%
-import sys
 import argparse
-
-import torch
-from torch import nn, optim
-
-from src.models.model import MyAwesomeModel
-
+import sys
 from pathlib import Path
 
-from torchvision.datasets import MNIST
+import torch
 import torchvision.transforms as transforms
+from torch import nn, optim
 from torch.utils.data import DataLoader
+from torchvision.datasets import MNIST
+
+from src.models.model import MyAwesomeModel
 
 #%%
 

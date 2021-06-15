@@ -1,15 +1,13 @@
 #%%
 import argparse
-
-import torch
-
-from src.models.model import MyAwesomeModel
-
 from pathlib import Path
 
-from torchvision.datasets import MNIST
+import torch
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader
+from torchvision.datasets import MNIST
+
+from src.models.model import MyAwesomeModel
 
 #%%
 

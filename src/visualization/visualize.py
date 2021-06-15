@@ -1,10 +1,11 @@
-import sys
 import argparse
-from pathlib import Path
-import torch
-from torch import nn, optim
-import torch.nn.functional as F
 import os
+import sys
+from pathlib import Path
+
+import torch
+import torch.nn.functional as F
+from torch import nn, optim
 
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
@@ -17,15 +18,12 @@ DATA_PATH = Path("data/processed")
 FIGURE_PATH = Path("reports/figures/")
 
 
-from torchvision import datasets, transforms
-from src.models.model import MyAwesomeModel
-import numpy as np
-
-
-from sklearn.manifold import TSNE
-
-
 import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.manifold import TSNE
+from torchvision import datasets, transforms
+
+from src.models.model import MyAwesomeModel
 
 # import plotext.plot as plx
 

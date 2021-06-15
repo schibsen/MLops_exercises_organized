@@ -1,10 +1,11 @@
-import sys
 import argparse
+import os
+import sys
 
 import torch
-from torch import nn, optim
 import torch.nn.functional as F
-import os 
+from torch import nn, optim
+
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 
 os.chdir("C:/Users/annas/OneDrive/Dokumente/DTU/8_semester/3weeks_MLops/MLops_exercises_organized/")
@@ -14,15 +15,16 @@ DATA_PATH = "data\\processed\\"
 FIGURE_PATH = "reports\\figures\\"
 
 
-from torchvision import datasets, transforms
-from src.models.model import MyAwesomeModel
-import numpy as np
-
 import matplotlib.pyplot as plt
-#import plotext.plot as plx
-
+import numpy as np
 import torchvision
 from torch.utils.tensorboard import SummaryWriter
+from torchvision import datasets, transforms
+
+from src.models.model import MyAwesomeModel
+
+#import plotext.plot as plx
+
 #rm -rf ./logs/
 
 

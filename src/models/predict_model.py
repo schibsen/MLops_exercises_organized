@@ -1,10 +1,10 @@
-import sys
 import argparse
+import os
+import sys
 
 import torch
-from torch import nn, optim
 import torch.nn.functional as F
-import os
+from torch import nn, optim
 
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
@@ -17,12 +17,10 @@ DATA_PATH = "data\\processed\\"
 FIGURE_PATH = "reports\\figures\\"
 
 
-from torchvision import datasets, transforms
-
-from model import MyAwesomeModel
-import numpy as np
-
 import matplotlib.pyplot as plt
+import numpy as np
+from model import MyAwesomeModel
+from torchvision import datasets, transforms
 
 # import plotext.plot as plx
 

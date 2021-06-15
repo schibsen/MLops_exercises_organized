@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-import click
 import logging
+import os
 from pathlib import Path
+
+import click
 from dotenv import find_dotenv, load_dotenv
 from torchvision import datasets, transforms
-import os
 
 os.chdir(
     "C:/Users/annas/OneDrive/Dokumente/DTU/8_semester/3weeks_MLops/MLops_exercises_organized"
