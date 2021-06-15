@@ -1,6 +1,6 @@
 import sys
 import argparse
-
+from pathlib import Path
 import torch
 from torch import nn, optim
 import torch.nn.functional as F
@@ -9,9 +9,9 @@ os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 
 os.chdir("C:/Users/annas/OneDrive/Dokumente/DTU/8_semester/3weeks_MLops/MLops_exercises_organized/")
 
-MODEL_PATH = "src\\models\\model.pth"
-DATA_PATH = "data\\processed\\"
-FIGURE_PATH = "reports\\figures\\"
+MODEL_PATH = Path('src/models/model.pth')
+DATA_PATH = Path("data/processed")
+FIGURE_PATH = Path("reports/figures/")
 
 
 from torchvision import datasets, transforms
@@ -56,9 +56,20 @@ class main():
                 features_all.append(features.numpy())
                 labels_all.append(labels.numpy()[0])
                 
+        # use t-SNE
+        features_np = np.stack(features_all,axis = 0).squeeze()
+        tsne = TSNE(n_components=2, init='pca', random_state=0)
+        out = tsne.fit_transform(features_np)
         
-        #features_embedded = TSNE.fit_transform(np.stack(features_all, axis = 0))
-        #print(features_embedded)
+        # plot t-SNE
+        colors = ['tab:blue', 'tab:orange', 'tab:green','tab:red', 'tab:purple', 'tab:brown', 'tab:pink', 'tab:gray', 'tab:olive', 'tab:cyan']
+        c_dict = dict(zip(list(range(10)), colors))
+        fig = plt.figure(figsize=(15, 8))
+        colors = plt.cm.rainbow(np.linspace(0, 1, 10000))
+        for idx, label in enumerate(zip(out, labels_all)):
+            x = label[0]
+            plt.scatter(x[0], x[1], c=c_dict[label[1]])
+
         return features_all, labels_all
         
     

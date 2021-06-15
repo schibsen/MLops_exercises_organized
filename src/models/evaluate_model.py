@@ -1,9 +1,7 @@
 #%%
-import sys
 import argparse
 
 import torch
-from torch import nn, optim
 
 from src.models.model import MyAwesomeModel
 
@@ -17,7 +15,7 @@ from torch.utils.data import DataLoader
 
 dataset_path = Path('/data/processed/MNIST/processed')
 batch_size = 64
-class Train(object):
+class Evaluate(object):
     """ Helper class that will help launch class methods as commands
         from a single script
     """
@@ -39,57 +37,40 @@ class Train(object):
 # =============================================================================
         self.train()
         
-    def train(self):
-        print("Training day and night")
+    def evaluate(self):
+        print("Evaluating until hitting the ceiling")
         parser = argparse.ArgumentParser(description='Training arguments')
-        parser.add_argument('--lr', default=0.1)
+        parser.add_argument('--load_model_from', default="model.pth")
         # add any additional argument that you want
-        args = parser.parse_args(sys.argv[2:])
-        print(args)
         
-        # Implement training loop 
         model = MyAwesomeModel(10)
-        criterion = nn.NLLLoss()
-        optimizer = optim.Adam(model.parameters(), lr=0.001)
-        #train_set, test_set = mnist()
+        dict_ = torch.load("model.pth")
+        model.load_state_dict(dict_)
         
         # Data loading
         mnist_transform = transforms.Compose([transforms.ToTensor()])
         ''
         #trainset = datasets.MNIST(DATA_PATH, download=True, train=True, transform=transform)
         
-        train_dataset = MNIST(dataset_path, transform=mnist_transform, train=True, download=True)
-        train_set = DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=True)
+        test_dataset  = MNIST(dataset_path, transform=mnist_transform, train=False, download=True)
+        test_set  = DataLoader(dataset=test_dataset,  batch_size=batch_size, shuffle=False)
 
         
-        
-        epochs = 20
-        steps = 0
-        train_losses = []
-        for e in range(epochs):
-            running_loss = 0
-            for images, labels in train_set:
-                log_ps = model(images)
-                loss = criterion(log_ps, labels)
-                optimizer.zero_grad()
-                loss.backward()
-                optimizer.step()
-                running_loss += loss.item()
-                steps += 1
-                train_losses.append(loss.item()/64)
-            print(f"Training loss: {running_loss/len(train_set)}")
-           
-        torch.save(model.state_dict(), 'model.pth')
-        
+        accuracy = 0
+        counter = 0
+        # turn off gradients for the purpose of speeding up the code
+        with torch.no_grad():
+            for images, labels in test_set: # with batch size 64
+                ps = torch.exp(model(images))
+                top_p, top_class = ps.topk(1, dim=1)
+                equals = top_class == labels.view(*top_class.shape)
+                counter += 1
+                accuracy += torch.mean(equals.type(torch.FloatTensor))
+            accuracy = accuracy / counter
+            print(f'Accuracy: {accuracy.item()*100}%')
+
 if __name__ == '__main__':
-    Train()
+    Evaluate()
     
     
     
-    
-    
-    
-    
-    
-    
-# %%
