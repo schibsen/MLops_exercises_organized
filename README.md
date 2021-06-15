@@ -14,7 +14,7 @@ Day one was about PyTorch in general, the application to the project are the def
    - It is used by simply running it in a python interpreter. 
 4. `predict_model.py`, which uses the saved model to **predict** the class of a given image or several images.  
    - It is used by simply running it in a python interpreter.
-   - It can be found [here](src\models\predict_model.py) 
+   - It can be found [here](/src/models/predict_model.py) 
 5. `visualize.py`, which uses [t-SNE](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html) to visualize the extracted features.  
    - It is used by simply running it in a python interpreter. 
 
